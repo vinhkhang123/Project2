@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="https://localhost:44386/sqlWS.asmx/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="https://localhost:44386/sqlWS.asmx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Chương trình planning WS</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://localhost:44386/sqlWS.asmx/">
+      <s:element name="ReadMasterData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMasterDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadMasterDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateMD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="machine" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="height" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="scrap" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="updated_by" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateMDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateMDResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="machine" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="height" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="scrap" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="updated_by" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateMDResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteMDResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReaddUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReaddUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReaddUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="full_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="production_line" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updated_by" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateUsersResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatedUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="full_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="production_line" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updated_by" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatedUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatedUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteUsersResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMaster_process">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="process_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMaster_processResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadMaster_processResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateMP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="process_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateMPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateMPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="process_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateMPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="process_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteMPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportExcelToSql">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportExcelToSqlResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExportSqlToExcel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportSqlToExcelResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="project3">
+        <s:complexType />
+      </s:element>
+      <s:element name="project3Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project3Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadMasterDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadMasterData" />
+  </wsdl:message>
+  <wsdl:message name="ReadMasterDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadMasterDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateMDSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateMD" />
+  </wsdl:message>
+  <wsdl:message name="CreateMDSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateMDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMDSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMD" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMDSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMDResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMDSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteMD" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMDSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteMDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReaddUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:ReaddUsers" />
+  </wsdl:message>
+  <wsdl:message name="ReaddUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:ReaddUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUsers" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatedUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatedUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdatedUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUsers" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadMaster_processSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadMaster_process" />
+  </wsdl:message>
+  <wsdl:message name="ReadMaster_processSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadMaster_processResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateMPSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateMP" />
+  </wsdl:message>
+  <wsdl:message name="CreateMPSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateMPResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMPSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMP" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMPSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMPResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMPSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteMP" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMPSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteMPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAccount" />
+  </wsdl:message>
+  <wsdl:message name="ReadAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateAccount" />
+  </wsdl:message>
+  <wsdl:message name="CreateAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAccount" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportExcelToSqlSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportExcelToSql" />
+  </wsdl:message>
+  <wsdl:message name="ImportExcelToSqlSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportExcelToSqlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExportSqlToExcelSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportSqlToExcel" />
+  </wsdl:message>
+  <wsdl:message name="ExportSqlToExcelSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportSqlToExcelResponse" />
+  </wsdl:message>
+  <wsdl:message name="project3SoapIn">
+    <wsdl:part name="parameters" element="tns:project3" />
+  </wsdl:message>
+  <wsdl:message name="project3SoapOut">
+    <wsdl:part name="parameters" element="tns:project3Response" />
+  </wsdl:message>
+  <wsdl:portType name="planningSoap">
+    <wsdl:operation name="ReadMasterData">
+      <wsdl:input message="tns:ReadMasterDataSoapIn" />
+      <wsdl:output message="tns:ReadMasterDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMD">
+      <wsdl:input message="tns:CreateMDSoapIn" />
+      <wsdl:output message="tns:CreateMDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMD">
+      <wsdl:input message="tns:UpdateMDSoapIn" />
+      <wsdl:output message="tns:UpdateMDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMD">
+      <wsdl:input message="tns:DeleteMDSoapIn" />
+      <wsdl:output message="tns:DeleteMDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReaddUsers">
+      <wsdl:input message="tns:ReaddUsersSoapIn" />
+      <wsdl:output message="tns:ReaddUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsers">
+      <wsdl:input message="tns:CreateUsersSoapIn" />
+      <wsdl:output message="tns:CreateUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatedUser">
+      <wsdl:input message="tns:UpdatedUserSoapIn" />
+      <wsdl:output message="tns:UpdatedUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsers">
+      <wsdl:input message="tns:DeleteUsersSoapIn" />
+      <wsdl:output message="tns:DeleteUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadMaster_process">
+      <wsdl:input message="tns:ReadMaster_processSoapIn" />
+      <wsdl:output message="tns:ReadMaster_processSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMP">
+      <wsdl:input message="tns:CreateMPSoapIn" />
+      <wsdl:output message="tns:CreateMPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMP">
+      <wsdl:input message="tns:UpdateMPSoapIn" />
+      <wsdl:output message="tns:UpdateMPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMP">
+      <wsdl:input message="tns:DeleteMPSoapIn" />
+      <wsdl:output message="tns:DeleteMPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAccount">
+      <wsdl:input message="tns:ReadAccountSoapIn" />
+      <wsdl:output message="tns:ReadAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <wsdl:input message="tns:CreateAccountSoapIn" />
+      <wsdl:output message="tns:CreateAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <wsdl:input message="tns:UpdateAccountSoapIn" />
+      <wsdl:output message="tns:UpdateAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAccount">
+      <wsdl:input message="tns:DeleteAccountSoapIn" />
+      <wsdl:output message="tns:DeleteAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportExcelToSql">
+      <wsdl:input message="tns:ImportExcelToSqlSoapIn" />
+      <wsdl:output message="tns:ImportExcelToSqlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportSqlToExcel">
+      <wsdl:input message="tns:ExportSqlToExcelSoapIn" />
+      <wsdl:output message="tns:ExportSqlToExcelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="project3">
+      <wsdl:input message="tns:project3SoapIn" />
+      <wsdl:output message="tns:project3SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="planningSoap" type="tns:planningSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadMasterData">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/ReadMasterData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMD">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateMD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMD">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdateMD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMD">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteMD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReaddUsers">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/ReaddUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsers">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatedUser">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdatedUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsers">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMaster_process">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/ReadMaster_process" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMP">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateMP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMP">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdateMP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMP">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteMP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAccount">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/ReadAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAccount">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportExcelToSql">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/ImportExcelToSql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportSqlToExcel">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/ExportSqlToExcel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="project3">
+      <soap:operation soapAction="https://localhost:44386/sqlWS.asmx/project3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="planningSoap12" type="tns:planningSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadMasterData">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/ReadMasterData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMD">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateMD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMD">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdateMD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMD">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteMD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReaddUsers">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/ReaddUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsers">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatedUser">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdatedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsers">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMaster_process">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/ReadMaster_process" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMP">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateMP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMP">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdateMP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMP">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteMP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAccount">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/ReadAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/CreateAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/UpdateAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAccount">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/DeleteAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportExcelToSql">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/ImportExcelToSql" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportSqlToExcel">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/ExportSqlToExcel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="project3">
+      <soap12:operation soapAction="https://localhost:44386/sqlWS.asmx/project3" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="planning">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Chương trình planning WS</wsdl:documentation>
+    <wsdl:port name="planningSoap" binding="tns:planningSoap">
+      <soap:address location="https://localhost:44386/PlanningWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="planningSoap12" binding="tns:planningSoap12">
+      <soap12:address location="https://localhost:44386/PlanningWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
